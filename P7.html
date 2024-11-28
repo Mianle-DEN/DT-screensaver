@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --clr: #0f0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #000;
+            transform: scale(0.9);
+        }
+
+        .container {
+            position: relative;
+            top: 150px;
+            height: 600px;
+            width: 150%;
+            display: flex;
+            justify-content: center;
+            animation: animateColor 5s linear infinite;
+        }
+
+        @keyframes animateColor {
+            0% {
+                filter: hue-rotate(0deg);
+            }
+            100% {
+                filter: hue-rotate(360deg);
+            }
+        }
+
+        .container .cloud {
+            position: relative;
+            width: 450px;
+            z-index: 100;
+            filter: drop-shadow(0 0 35px var(--clr));
+        }
+
+        .container .cloud h2 {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            color: #000;
+            font-size: 2em;
+            z-index: 1000;
+            font-weight: 400;
+            padding: 0 15px;
+            border-radius: 15px;
+            text-transform: uppercase;
+            background: var(--clr);
+        }
+
+        .container .cloud h2::before {
+            content: '';
+            position: absolute;
+            top: -172.5px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 150px;
+            width: 180%;
+            height: 150px;
+            background: var(--clr);
+        }
+         .container .cloud h2::after {
+            content: '';
+            position: absolute;
+            top: -225px;
+            left: -5px;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: var(--clr);
+            box-shadow: 180px -45px 0 15px var(--clr);
+        }
+
+        .container .cloud .drop {
+            position: absolute;
+            top: 90px;
+            height: 30px;
+            line-height: 30px;
+            color: var(--clr);
+            transform-origin: bottom;
+            animation: animate 2s linear infinite;
+        }
+
+        @keyframes animate {
+            0% {
+                transform: translateY(0) scaleY(0);
+                transform-origin: top;
+            }
+            10% {
+                transform: translateY(0) scaleY(0.25);
+                transform-origin: top;
+            }
+            20% {
+                transform: translateY(0) scaleY(1);
+            }
+            70% {
+                transform: translateY(450px) scaleY(1);
+                transform-origin: bottom;
+            }
+            100% {
+                transform: translateY(450px) scaleY(0);
+                transform-origin: bottom;
+                text-shadow: -270px 0 0 var(--clr), 270px 0 var(--clr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="cloud">
+            <h2>number rain</h2>
+        </div>
+    </div>
+    <script>
+        function randomText() {
+            var text = "123456789";
+            letters = text[Math.floor(Math.random() * text.length)];
+            return letters;
+        }
+
+        function rain() {
+            let cloud = document.querySelector('.cloud');
+            let e = document.createElement('div');
+            e.classList.add('drop');
+            cloud.appendChild(e);
+
+            let left = Math.floor(Math.random() * 450);
+            let size = Math.random() * 1.5;
+            let duration = Math.random() * 1;
+
+            e.innerText = randomText();
+            e.style.left = left + 'px';
+            e.style.fontSize = 0.75 + size + 'em';
+            e.style.animationDuration = 1.5 + duration + 's';
+
+            setTimeout(function () {
+                cloud.removeChild(e);
+            }, 3000);
+        }
+
+        setInterval(function () {
+            rain();
+        }, 30);
+    </script>
+</body>
+</html>
+

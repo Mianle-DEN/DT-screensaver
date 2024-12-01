@@ -47,9 +47,6 @@ a {
   border: 1px solid #a2a2a2;
   background-color: #f4f4f4;
   box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
-
-  
-  /* 使用 flexbox 确保小标题横向排列 */
   display: flex;
   justify-content: space-around;  /* 小标题水平方向均匀排列 */
   align-items: center;      /* 小标题垂直方向居中 */
@@ -88,6 +85,7 @@ a {
     flex-direction: row;
     justify-content: space-between;
   }
+
 
 
 
@@ -344,20 +342,27 @@ body{
   padding-top:10%;
 }
 
+#four,iframe{
+  margin-left:500px;
+  width:900px;
+  height:500px;
+  margin-top:15px;
+
+}
 #one{
   font-family: 'Montserrat', sans-serif;
   padding-top: 90px;
   width: 1420px;
   height: 150px;
-  color:#f4f4f4;
-  background-color: #000;
+  color:#000;
+  background-color: darkgrey;
 }
 #two{
   font-family: 'Montserrat', sans-serif;
   width: 1420px;
   height:70px;
-  color:#f4f4f4;
-  background-color: #000;
+  color:#000;
+  background-color: darkgrey;
 }
 #three{
   padding:5px 5px 5px 5px;
